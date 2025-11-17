@@ -2,9 +2,9 @@
   <policy domain="delegate" rights="none" pattern="*" />
   <policy domain="module" rights="none" pattern="*" />
   <policy domain="module" rights="read | write" pattern="{GIF,JPEG,PNG,WEBP}" />
-  <policy domain="coder" rights="write" pattern="{MSVG,MVG,PDF,PS,PS2,PS3,XPS}" />
+  <policy domain="coder" rights="read|write" pattern="{MSVG,MVG,PDF,PS,PS2,PS3,XPS}" />
   <!-- <policy domain="resource" name="list-length" value="1"/> -->
-  <policy domain="module" rights="none" pattern="{PS,PDF,XPS}"/>
+  <policy domain="module" rights="read|write" pattern="{PS,PDF,XPS}"/>
   <policy domain="path" rights="none" pattern="@*"/>  <!-- indirect reads not permitted -->
   <policy domain="system" name="memory-map" value="anonymous"/>
   <policy domain="cache" name="memory-map" value="anonymous"/>

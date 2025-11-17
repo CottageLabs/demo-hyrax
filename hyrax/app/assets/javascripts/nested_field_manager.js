@@ -112,6 +112,7 @@ var NestedFieldManager = function () {
             $newChildren.val('').removeProp('required').removeAttr('style');
             this.updateIndexInId($newChildren, $currentId, $newId);
             this.updateIndexInName($newChildren, $currentId, $newId);
+            this.initializeDatePicker($newChildren);
             $newChildren.first().focus();
             this.element.trigger("manage_nested_fields:add", $newChildren.first());
             return $newField;
@@ -163,6 +164,18 @@ var NestedFieldManager = function () {
             $activeField.find(this.removeInputClass).val('1');
             $activeField.hide();
             this._manageFocus();
+        }
+    }, {
+        key: 'initializeDatePicker',
+        value: function initializeDatePicker($newChildren) {
+            var datefield = $($newChildren[1]);
+            if (datefield.hasClass('hasDatepicker')) {
+                datefield.removeClass('hasDatepicker');
+                datefield.datepicker({
+                    orientation: "bottom left",
+                    dateFormat: "dd/mm/yy"
+                });
+            }
         }
     }]);
 

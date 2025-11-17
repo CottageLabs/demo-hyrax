@@ -6,8 +6,10 @@ module AdminSetSetupService
       title = 'Mediated deposit workflow'
       workflow_name = 'mediated_deposit_workflow'
       new_admin_set = create_or_find_admin_set(title)
-      activate_workflow(new_admin_set.id.to_s, workflow_name)
-      add_participants_and_visibility(new_admin_set.id.to_s)
+      if new_admin_set
+        activate_workflow(new_admin_set.id.to_s, workflow_name)
+        add_participants_and_visibility(new_admin_set.id.to_s)
+      end
     else
       raise StandardError, "Group #{group} not found. Available options are #{supported_groups}"
     end
