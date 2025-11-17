@@ -24,7 +24,7 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  # Do content negotiation for AF models. 
+  # Do content negotiation for AF models.
 
   use_extension( Hydra::ContentNegotiation )
 
@@ -58,5 +58,49 @@ class SolrDocument
 
   def complex_person
     self['complex_person_ssm']
+  end
+
+  def tombstone_status
+    self["tombstone_status_ssim"]
+  end
+
+  def is_tombstoned
+    self["is_tombstoned_ssim"]
+  end
+
+  def tombstone_date
+    self["tombstone_date_ssim"]
+  end
+
+  def proxy_depositor
+    self["proxy_depositor_ssim"]
+  end
+
+  def complex_date
+    self["complex_date_ssm"]
+  end
+
+  def complex_funding_reference
+    self["complex_funding_reference_ssm"]
+  end
+
+  def complex_identifier
+    self["complex_identifier_ssm"]
+  end
+
+  def complex_relation
+    self["complex_relation_ssm"]
+  end
+
+  def for_complex_identifier
+    self["for_complex_identifier_tesim"]
+  end
+
+  def sipity_entity
+    @sipity_entity ||= Sipity::Entity(self)
+  end
+
+  def workflow_state
+    sipity_entity.workflow_state.name
   end
 end

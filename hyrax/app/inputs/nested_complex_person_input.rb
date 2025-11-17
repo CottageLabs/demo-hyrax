@@ -10,7 +10,7 @@ class NestedComplexPersonInput < NestedAttributesInput
       required = true
     end
 
-    # Add remove elemnt only if element repeats
+    # Add remove element only if element repeats
     repeats = options.delete(:repeats)
     repeats = true if repeats.nil?
 
@@ -25,7 +25,7 @@ class NestedComplexPersonInput < NestedAttributesInput
 
     out << "<div class='row'>"
     out << "  <div class='col-md-3'>"
-    out << template.label_tag(field_name, I18n.t('or2024.fields.first_name'), required: required)
+    out << template.label_tag(field_name, I18n.t('app.fields.first_name'), required: required)
     out << '  </div>'
 
     out << "  <div class='col-md-9'>"
@@ -42,7 +42,7 @@ class NestedComplexPersonInput < NestedAttributesInput
 
     out << "<div class='row'>"
     out << "  <div class='col-md-3'>"
-    out << template.label_tag(field_name, I18n.t('or2024.fields.last_name'), required: required)
+    out << template.label_tag(field_name, I18n.t('app.fields.last_name'), required: required)
     out << '  </div>'
 
     out << "  <div class='col-md-9'>"
@@ -113,9 +113,5 @@ class NestedComplexPersonInput < NestedAttributesInput
     end
 
     out
-  end
-
-  def name_for(attribute_name, index, field, parent)
-    "#{@builder.object_name}[#{attribute_name}_attributes][#{index}][#{field}]"
   end
 end

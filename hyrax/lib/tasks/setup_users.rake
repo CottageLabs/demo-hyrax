@@ -1,5 +1,5 @@
-namespace :or2024 do
-  desc 'Add users to OR2024. usage: or2024:setup_users["users.json", "false"]'
+namespace :hyrax_demo do
+  desc 'Add users to Hyrax demo. usage: hyrax_demo:setup_users["users.json", "false"]'
   task :setup_users, [:seedfile, :update_users] => :environment do |task, args|
 
     seedfile = args.seedfile
@@ -26,7 +26,6 @@ namespace :or2024 do
       puts "--- User: #{user_count} ---"
 
       newuser = User.find_by(email: user["email"])
-      messages = "Updating user #{newuser.email}"
 
       unless newuser
         messages = "Creating user #{user["email"]}"
@@ -37,6 +36,8 @@ namespace :or2024 do
         )
         newuser.password = user["password"]
         newuser.save!
+      else
+        messages = "Updating user #{newuser.email}"
       end
 
       if user["role"] == "admin"

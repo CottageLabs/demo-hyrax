@@ -30,4 +30,110 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app:
+    fields:
+      depositor:                "Owner"
+      proxy_depositor:          "Depositor"
+      alternative_title:        "Alternative title"
+      approval_number:          "Animal/Ethics Approval No."
+      complex_date:             "Date"
+      complex_funding_reference: "Funding reference"
+      complex_identifier:       "Identifier"
+      complex_modality:
+        title:                  "Modality title"
+        modality:               "Modality"
+      complex_person:           "Creator or Contributor"
+      complex_relation:         "Related item"
+      complex_session:
+        title:                  "Session title"
+        date_recorded:          "Session date recorded"
+      complex_subject:
+        title:                  "Subject code"
+        species:                "Subject species"
+        type:                   "Subject type"
+        sex:                    "Subject sex"
+        age:                    "Subject age (in years)"
+      coverage:                 "Coverage"
+      crc_resource_type:        "CRC Resource type"
+      dataset_method:           "Method"
+      doi:                      "DOI"
+      folder_name:              "Folder name"
+      experiment_description:   "Experiment description"
+      extra_information:        "Extra information"
+      first_name:               "Given name"
+      full_name:                "Full name"
+      last_name:                "Surname"
+      modality:                 "Modality"
+      plasma_source_name:       "Plasma source name"
+      plasma_source_application: "Plasma source application"
+      plasma_source_specification: "Plasma source specification"
+      plasma_source_specification_waveform:  "Waveform"
+      plasma_source_specification_frequency: "Frequency"
+      plasma_source_specification_pressure:  "Pressure"
+      plasma_source_specification_temperature: "Temperature"
+      plasma_source_properties: "Plasma source properties"
+      plasma_source_procedure:  "plasma source procedure"
+      plasma_medium:            "Plasma medium"
+      plasma_medium_name:       "Name"
+      plasma_medium_properties: "Properties"
+      plasma_medium_procedure:  "Procedure"
+      plasma_target:            "Plasma target"
+      plasma_target_name:       "Name"
+      plasma_target_properties: "Properties"
+      plasma_target_procedure: "Procedure"
+      plasma_diagnostics:      "Plasma diagnostics"
+      plasma_diagnostics_name:  "Name"
+      plasma_diagnostics_properties: "Properties"
+      plasma_diagnostics_procedure:  "Procedure"
+      software_version:         "Software version"
+      title:                    "Title"
+    errors:
+      not_found:
+        heading: "The page you were looking for doesn't exist."
+        description: "You may have mistyped the address or the page may have moved."
+      internal_server_error:
+        heading: "We're sorry, but something went wrong."
+        description: ''
+      unprocessable_entity:
+        heading: "The change you wanted was rejected."
+        description: "Maybe you tried to change something you didn't have access to."
+      access_forbidden:
+        heading: "Access Denied"
+        description: "Oops, You don't have permission to access this page"
+      suggestion: "If you are the application owner check the logs for more information."
+      complex_subject:
+        title:
+          blank: "Subject code can't be blank"
+          uniqueness: "Folder name (%{value}) obtained from subject code is already taken."
+          length: "The subject code should be between 3-63 characters long. Consider using leading zeros (e.g. 003 instead of 3)"
+      complex_session:
+        title:
+          blank: "Session title can't be blank"
+          uniqueness: "Folder name (%{value}) obtained from session title is already taken."
+          length: "The session title should be between 3-63 characters long. Consider using leading zeros (e.g. 003 instead of 3)"
+      complex_modality:
+        title:
+          blank: "Modality title can't be blank"
+          uniqueness: "Folder name (%{value}) obtained from modality title is already taken."
+          length: "The modality title should be between 3-63 characters long. Consider using leading zeros (e.g. 003 instead of 3)"
+      uploads:
+        incorrect_file_name: "The file name contains invalid characters. Please avoid using any special characters (other than - and _). Delete this file and upload again after changing the name"
+        file_not_allowed: "This file name is restricted. Delete this file and upload again after changing the name"
+        s3_server_error: "Apologies for the inconvenience. At the moment, this feature is not accessible. This is due to an issue with the connectivity to our research data storage. Our team is diligently working on resolving this. Please try again later. Thank you for your understanding and patience."
+      accept_agreement: "You need to accept the %{value} to use ReSeed as an authenticated user"
+  simple_form:
+    hints:
+      defaults:
+        title: The title of your work.
+        abstract: Abstract, method, table of contents, technical information or a free-text description for the dataset.
+        alternative_title: Alternative title or the title in another language, if applicable.
+        keyword: '<strong>Note:</strong> To enter multiple keywords, click on "Add another Keyword." Do not list them in a single field.'
+        license: License for your work.
+        resource_type: Type of content. More than one type may be selected.
+        publisher: The person or group making the work available.
+        complex_person: 'Authors or contributors to the work. <br/>If the creator or contributor (person) has multiple affiliations or roles, please add them as a separate person with the new affiliation or role and repeating the other details (e.g. name, ORICD)'
+        complex_identifier: External identifiers, if applicable.
+        complex_relation: If adding a relationship, all of the three fields are required. The URL needs to be the complete canonical URL of the item, e.g., including the https:// .
+    placeholders:
+      defaults:
+        language: "En"

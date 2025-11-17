@@ -49,7 +49,7 @@ fi
 
 
 echo "Setting up hyrax... (this can take a few minutes)"
-bundle exec rake or2024:setup_hyrax["seed/setup.json"]
+bundle exec rake hyrax_demo:setup_hyrax["seed/setup.json"]
 
 # echo "--------- Starting Hyrax in ${RAILS_ENV} mode ---------"
 rm -f /tmp/hyrax.pid

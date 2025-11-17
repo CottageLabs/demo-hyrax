@@ -1,0 +1,5 @@
+<div class="base-terms description-terms">
+  <% f.object.description_tab_terms.each do |term| %>
+    <%= render_edit_field_partial(term, f: f) %>
+  <% end %>
+</div>

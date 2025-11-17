@@ -1,0 +1,15 @@
+<div class="multi-nested multi_value custom_field">
+  <%= f.input :complex_identifier,
+              as: :nested_identifier,
+              include_blank: false,
+              input_html: {
+                class: '',
+                data: {name: :complex_identifier}
+              },
+              required: f.object.required?(:complex_identifier)
+  %>
+  <button type="button" class="btn btn-link add">
+    <span class="glyphicon glyphicon-plus"></span>
+    <span class="controls-add-text">Add another identifier</span>
+  </button>
+</div>

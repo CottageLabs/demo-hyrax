@@ -75,7 +75,7 @@ services:
   web:
     <<: *app
     environment:
-      - VIRTUAL_HOST=or2024.docker
+      - VIRTUAL_HOST=hyrax_demo.docker
       - VIRTUAL_PORT=3000
       - RAILS_FORCE_SSL=false
     command: bash -c "/bin/docker-entrypoint.sh"

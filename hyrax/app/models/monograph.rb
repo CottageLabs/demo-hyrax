@@ -5,4 +5,5 @@
 class Monograph < Hyrax::Work
   include Hyrax::Schema(:basic_metadata)
   include Hyrax::Schema(:monograph)
+  include CommonQuery
 end

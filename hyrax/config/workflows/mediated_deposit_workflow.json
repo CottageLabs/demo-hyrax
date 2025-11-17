@@ -1,73 +1,290 @@
 {
     "workflows": [
         {
-            "name": "one_step_mediated_deposit",
-            "label": "One-step mediated deposit workflow",
+            "name": "mediated_deposit_workflow",
+            "label": "Mediated deposit workflow",
             "description": "A single-step workflow for mediated deposit in which all deposits must be approved by a reviewer. Reviewer may also send deposits back to the depositor.",
-            "allows_access_grant": false,
+            "allows_access_grant": true,
             "actions": [
                 {
-                    "name": "deposit",
+                    "name": "draft",
                     "from_states": [],
-                    "transition_to": "pending_review",
+                    "transition_to": "draft",
                     "notifications": [
                         {
                             "notification_type": "email",
-                            "name": "Hyrax::Workflow::PendingReviewNotification",
-                            "to": ["approving"]
+                            "name": "Hyrax::Workflow::DraftNotification",
+                            "to": [
+                                "depositor"
+                            ]
                         }
                     ],
                     "methods": [
-                        "Hyrax::Workflow::GrantReadToDepositor",
+                        "Hyrax::Workflow::GrantEditToDepositor",
                         "Hyrax::Workflow::DeactivateObject"
                     ]
-                }, {
-                    "name": "request_changes",
-                    "from_states": [{"names": ["deposited", "pending_review"], "roles": ["approving"]}],
-                    "transition_to": "changes_required",
-                    "notifications": [
+                },
+                {
+                    "name": "submit_for_review",
+                    "from_states": [
                         {
-                            "notification_type": "email",
-                            "name": "Hyrax::Workflow::ChangesRequiredNotification",
-                            "to": ["approving"]
+                            "names": [
+                                "draft"
+                            ],
+                            "roles": [
+                                "depositing"
+                            ]
                         }
                     ],
-                    "methods": [
-                        "Hyrax::Workflow::DeactivateObject",
-                        "Hyrax::Workflow::GrantEditToDepositor"
-                    ]
-                }, {
-                    "name": "approve",
-                    "from_states": [{"names": ["pending_review"], "roles": ["approving"]}],
-                    "transition_to": "deposited",
+                    "transition_to": "pending_review_from_publication_manager",
                     "notifications": [
                         {
                             "notification_type": "email",
-                            "name": "Hyrax::Workflow::DepositedNotification",
-                            "to": ["approving"]
+                            "name": "Hyrax::Workflow::SentForReview::DepositorNotification",
+                            "to": [
+                                "depositor"
+                            ]
+                        },
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::PendingReview::PublicationManagerNotification",
+                            "to": [
+                                "approving_publication_manager"
+                            ]
                         }
                     ],
                     "methods": [
                         "Hyrax::Workflow::GrantReadToDepositor",
                         "Hyrax::Workflow::RevokeEditFromDepositor",
-                        "Hyrax::Workflow::ActivateObject"
+                        "Hyrax::Workflow::GrantReadToPublicationManager"
                     ]
-                }, {
-                    "name": "request_review",
-                    "from_states": [{"names": ["changes_required"], "roles": ["depositing"]}],
-                    "transition_to": "pending_review",
+                },
+                {
+                    "name": "request_changes_from_publication_manager",
+                    "from_states": [
+                        {
+                            "names": [
+                                "pending_review_from_publication_manager"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "transition_to": "changes_required_from_publication_manager",
                     "notifications": [
                         {
                             "notification_type": "email",
-                            "name": "Hyrax::Workflow::PendingReviewNotification",
-                            "to": ["approving"]
+                            "name": "Hyrax::Workflow::ChangesRequiredNotification",
+                            "to": [
+                                "depositor"
+                            ]
                         }
+                    ],
+                    "methods": [
+                        "Hyrax::Workflow::GrantEditToDepositor",
+                        "Hyrax::Workflow::GrantReadToPublicationManager"
                     ]
-                }, {
+                },
+                {
+                    "name": "request_review_to_publication_manager",
+                    "from_states": [
+                        {
+                            "names": [
+                                "changes_required_from_publication_manager"
+                            ],
+                            "roles": [
+                                "depositing"
+                            ]
+                        }
+                    ],
+                    "transition_to": "pending_review_from_publication_manager",
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::SentForReview::DepositorNotification",
+                            "to": [
+                                "depositor"
+                            ]
+                        },
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::PendingReview::PublicationManagerNotification",
+                            "to": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "methods": [
+                        "Hyrax::Workflow::GrantReadToDepositor",
+                        "Hyrax::Workflow::RevokeEditFromDepositor",
+                        "Hyrax::Workflow::DeactivateObject"
+                    ]
+                },
+                {
+                    "name": "archive_from_publication_manager",
+                    "from_states": [
+                        {
+                            "names": [
+                                "pending_review_from_publication_manager"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "transition_to": "archived",
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::ArchiveNotification",
+                            "to": [
+                                "depositor"
+                            ]
+                        }
+                    ],
+                    "methods": [
+                        "Hyrax::Workflow::RegisterArchiveDate",
+                        "Hyrax::Workflow::GrantReadToDepositor",
+                        "Hyrax::Workflow::RevokeEditFromDepositor",
+                        "Hyrax::Workflow::GrantEditToPublicationManager",
+                        "Hyrax::Workflow::ActivateObject",
+                        "Hyrax::Workflow::TransferOwnership"
+                    ]
+                },
+                {
+                    "name": "approval_from_publication_manager",
+                    "from_states": [
+                        {
+                            "names": [
+                                "pending_review_from_publication_manager"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "transition_to": "published",
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::DepositedNotification",
+                            "to": [
+                                "depositor",
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "methods": [
+                        "Hyrax::Workflow::GrantReadToDepositor",
+                        "Hyrax::Workflow::RevokeEditFromDepositor",
+                        "Hyrax::Workflow::GrantReadToPublicationManager",
+                        "Hyrax::Workflow::RevokeEditFromPublicationManager",
+                        "Hyrax::Workflow::ActivateObject",
+                        "Hyrax::Workflow::RegisterDoi",
+                        "Hyrax::Workflow::TransferOwnership",
+                        "Hyrax::Workflow::MakeVisibilityPublic"
+                    ]
+                },
+                {
                     "name": "comment_only",
                     "from_states": [
-                        { "names": ["pending_review", "deposited"], "roles": ["approving"] },
-                        { "names": ["changes_required"], "roles": ["depositing"] }
+                        {
+                            "names": [
+                                "draft"
+                            ],
+                            "roles": [
+                                "depositing"
+                            ]
+                        },
+                        {
+                            "names": [
+                                "changes_required_from_publication_manager"
+                            ],
+                            "roles": [
+                                "depositing"
+                            ]
+                        },
+                        {
+                            "names": [
+                                "pending_review_from_publication_manager"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "tombstone",
+                    "from_states": [
+                        {
+                            "names": [
+                                "published"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "transition_to": "tomstoned_initiated",
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::TombstoneInitiateNotification",
+                            "to": [
+                                "depositor",
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "methods": [
+                        "Hyrax::Workflow::TombstoneInitiate"
+                    ]
+                },
+                {
+                    "name": "restore",
+                    "from_states": [
+                        {
+                            "names": [
+                                "tomstoned_initiated"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "transition_to": "published",
+                    "notifications": [],
+                    "methods": [
+                        "Hyrax::Workflow::TombstoneRestore"
+                    ]
+                },
+                {
+                    "name": "confirm_delete",
+                    "from_states": [
+                        {
+                            "names": [
+                                "tomstoned_initiated"
+                            ],
+                            "roles": [
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "transition_to": "tombstoned",
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::TombstonedNotification",
+                            "to": [
+                                "depositor",
+                                "approving_publication_manager"
+                            ]
+                        }
+                    ],
+                    "methods": [
+                        "Hyrax::Workflow::TombstoneConfirmDelete"
                     ]
                 }
             ]

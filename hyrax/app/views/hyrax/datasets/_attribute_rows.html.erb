@@ -1,14 +1,52 @@
+<!-- Accordion wrapper -->
+<div class="card-group" id=<%= "#{presenter.id}" %>>
 
-<%= presenter.attribute_to_html(:alternative_title, html_dl: true) %>
-<%= presenter.attribute_to_html(:complex_person, label: t('or2024.fields.complex_person'), render_as: :nested_person, html_dl: true) %>
-<%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
-<%= presenter.attribute_to_html(:subject, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:publisher, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:language, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:keyword, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:date_created, render_as: :linked, search_field: 'date_created_tesim', html_dl: true) %>
-<%= presenter.attribute_to_html(:based_near_label, html_dl: true) %>
-<%= presenter.attribute_to_html(:resource_type, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement, html_dl: true) %>
-<%= presenter.attribute_to_html(:rights_notes, html_dl: true) %>
-
+  <!-- Description accordion -->
+  <div class="card card-default">
+    <!-- Accordion header -->
+    <div class="card-heading dataset-description" data-toggle="collapse" data-target="#description">
+      <h4 class="card-title">
+        <p class="accordion-toggle mb-0">Description</p>
+      </h4>
+    </div> <!-- Accordion header -->
+    <!-- Accordion body -->
+    <div id="description" class="card-collapse collapse show">
+      <div class="card-body">
+        <!-- required terms -->
+        <%= presenter.attribute_to_html(:title, label: t('Title'), html_dl: true) %>
+        <% if current_user %>
+          <%= presenter.attribute_to_html(:depositor, render_as: :faceted, label: t('app.fields.depositor'), html_dl: true) %>
+          <%= presenter.attribute_to_html(:proxy_depositor, render_as: :faceted, label: t('app.fields.proxy_depositor'), html_dl: true) %>
+        <% end %>
+        <%= presenter.attribute_to_html(:complex_person, render_as: :nested_person, label: t('app.fields.complex_person'), html_dl: true) %>
+        <%= presenter.attribute_to_html(:abstract, html_dl: true) %>
+        <%= presenter.attribute_to_html(:resource_type, render_as: :faceted, html_dl: true) %>
+        <%= presenter.attribute_to_html(:keyword, render_as: :faceted, html_dl: true) %>
+        <%= presenter.attribute_to_html(:license, render_as: :faceted, html_dl: true) %>
+        <!-- description terms -->
+        <%= presenter.attribute_to_html(:alternative_title, label: t('app.fields.alternative_title'), html_dl: true) %>
+        <%= presenter.attribute_to_html(:description, html_dl: true) %>
+        <%= presenter.attribute_to_html(:complex_date, render_as: :nested_date, label: t('app.fields.complex_date'), html_dl: true) %>
+        <%= presenter.attribute_to_html(:dataset_method, html_dl: true) %>
+        <%= presenter.attribute_to_html(:series_information, html_dl: true) %>
+        <%= presenter.attribute_to_html(:table_of_contents, html_dl: true) %>
+        <%= presenter.attribute_to_html(:technical_information, html_dl: true) %>
+        <%= presenter.attribute_to_html(:subject, render_as: :faceted, html_dl: true) %>
+        <%= presenter.attribute_to_html(:language, render_as: :faceted, html_dl: true) %>
+        <%= presenter.attribute_to_html(:based_near_label, render_as: :faceted, html_dl: true) %>
+        <%= presenter.attribute_to_html(:software_version, html_dl: true) %>
+        <!-- references terms -->
+        <%= presenter.attribute_to_html(:complex_relation, render_as: :nested_relation, label: t('app.fields.complex_relation'), html_dl: true) %>
+        <%= presenter.attribute_to_html(:complex_identifier, render_as: :nested_identifier, label: t('app.fields.complex_identifier'), html_dl: true) %>
+        <!-- funding terms -->
+        <%= presenter.attribute_to_html(:complex_funding_reference, render_as: :nested_funding_reference, label: t('app.fields.complex_funding_reference'), html_dl: true) %>
+        <!-- published terms -->
+        <%= presenter.attribute_to_html(:publisher, render_as: :faceted, html_dl: true) %>
+        <%= presenter.attribute_to_html(:doi, label: 'DOI', html_dl: true) %>
+        <%= presenter.attribute_to_html(:date_created, render_as: :linked, search_field: 'date_created_tesim', html_dl: true) %>
+        <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
+      </div> <!-- card body -->
+    </div> <!-- Accordion body -->
+  </div> <!-- Description accordion -->
+</div>
+<!-- Accordion wrapper -->

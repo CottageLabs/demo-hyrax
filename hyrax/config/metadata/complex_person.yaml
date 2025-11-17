@@ -2,30 +2,42 @@ attributes:
   first_name:
     type: string
     form:
-      required: false
+      required: true
       primary: true
-    predicate: http://hyrax-example.com/first_name
+    predicate: http://xmlns.com/foaf/0.1/givenName
   last_name:
-    type: integer
+    type: string
     form:
       required: false
       primary: true
-    predicate: http://hyrax-example.com/last_name
+    predicate: http://xmlns.com/foaf/0.1/familyName
+  name:
+    type: string
+    form:
+      required: false
+      primary: true
+    predicate: http://www.w3.org/2006/vcard/ns#hasName
+  email:
+    type: string
+    form:
+      required: false
+      primary: true
+    predicate: http://xmlns.com/foaf/0.1/mbox
   role:
-    type: integer
+    type: string
     form:
       required: false
       primary: true
-    predicate: http://hyrax-example.com/role
+    predicate: http://www.loc.gov/mods/rdf/v1#roleRelationship
   orcid:
     type: integer
     form:
       required: false
       primary: true
-    predicate: http://hyrax-example.com/orcid
+    predicate: http://purl.org/spar/datacite/hasIdentifier
   affiliation:
     type: integer
     form:
       required: false
       primary: true
-    predicate: http://hyrax-example.com/affiliation
+    predicate: http://data-vocabulary.org/affiliation

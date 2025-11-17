@@ -59,7 +59,7 @@ class NestedAttributeRenderer < Hyrax::Renderers::FacetedAttributeRenderer
   end
 
   def get_doi_hyperlink(val)
-    doi = DOI.new(val)
+    doi = Doi.new(val)
     link_to(doi.label, doi.url, target: '_blank')
   end
 
@@ -69,7 +69,7 @@ class NestedAttributeRenderer < Hyrax::Renderers::FacetedAttributeRenderer
   end
 
   def get_hyperlink(val)
-    Rinku.auto_link(val, :all, 'target="_blank"')
+    ::Rinku.auto_link(val, :all, 'target="_blank"')
   end
 
   def get_nested_output(field, label, nested_value, renderer_class, display_label=false)

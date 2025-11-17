@@ -7,11 +7,12 @@ class NestedAttributesInput < MultiValueInput
   protected
 
   def build_field(value, index, parent=@builder.object_name)
+    @rendered_first_element = false
     options = input_html_options.dup
-
+    
     options[:name] = name_for(attribute_name, index, 'hidden_label'.freeze, parent)
     options[:id] = id_for(attribute_name, index, 'hidden_label'.freeze, parent)
-
+    
     if new_record?(value)
       build_options_for_new_row(attribute_name, index, options)
     else
@@ -25,6 +26,7 @@ class NestedAttributesInput < MultiValueInput
     options[:class] += ["#{} form-control multi_value multi-text-field"]
     options[:'aria-labelledby'] = label_id
     out = ''
+
     if false#value.is_a?(Array)
       value.each do |val|
         out << build_components(attribute_name, val, index, options, parent)
@@ -96,7 +98,8 @@ class NestedAttributesInput < MultiValueInput
   def value_is_empty?(value)
     is_empty = true
     value.each do |t|
-      if t.predicate.start_with?('http://www.example.com/vocabs/rdms/subject') and t.object.present?
+      if (t.predicate.start_with?('http://www.example.com') or
+        t.predicate.start_with?('http://www.hyrax-example.com')) and t.object.present?
         is_empty = false
       end
     end
@@ -106,5 +109,18 @@ class NestedAttributesInput < MultiValueInput
   def new_record?(hash)
     return true if hash.blank?
     hash.values.all?(&:blank?)
+  end
+
+  def name_for(attribute_name, index, field, parent)
+    "#{@builder.object_name}[#{attribute_name}_attributes][#{index}][#{field}]"
+  end
+
+  def collection
+    @collection ||=
+      if attribute_name == :complex_person
+        Array(object.send(attribute_name)).reject { |v| v.to_s.strip.blank? }.sort_by { |v| v[:display_order].present? ? v[:display_order].to_i : 500 } + ['']
+      else
+        Array(object.send(attribute_name)).reject { |v| v.to_s.strip.blank? } + ['']
+      end
   end
 end

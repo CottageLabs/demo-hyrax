@@ -1,0 +1,28 @@
+attributes:
+  title:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://purl.org/dc/terms/title
+  url:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.loc.gov/mods/rdf/v1#locationUrl
+  complex_identifier:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.loc.gov/mods/rdf/v1#identifierGroup
+  relationship:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#roleType
+  
+
+  

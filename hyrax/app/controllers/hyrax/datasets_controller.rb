@@ -9,6 +9,7 @@ module Hyrax
     include Hyrax::WorksControllerBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = ::Dataset
+    include TombstoneBehavior
     self.show_presenter = Hyrax::DatasetPresenter
     # Use a Valkyrie aware form service to generate Valkyrie::ChangeSet style
     # forms.

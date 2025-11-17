@@ -1,0 +1,46 @@
+terms:
+  - id: group id
+    term: Group id
+    active: true
+  - id: identifier local
+    term: Identifier - Local
+    active: true
+  - id: identifier persistent
+    term: Identifier - Persistent
+    active: true
+  - id: ARK
+    term: ARK
+    active: true
+  - id: DOI
+    term: DOI
+    active: true
+  - id: handle identifier
+    term: Handle identifier
+    active: true
+  - id: edu person principal name
+    term: eduPersonPrincipalName
+    active: true
+  - id: edu person targeted id
+    term: eduPersonTargetedID
+    active: true
+  - id: full image url
+    term: Full Image URL
+    active: true
+  - id: ORCID
+    term: ORCID
+    active: true
+  - id: project id
+    term: Project ID
+    active: true
+  - id: thumbnail image url
+    term: Thumbnail Image URL
+    active: true
+  - id: web image url
+    term: Web Image URL
+    active: true
+  - id: previous identifier
+    term: Previous identifier
+    active: true
+  - id: other
+    term: Other
+    active: true

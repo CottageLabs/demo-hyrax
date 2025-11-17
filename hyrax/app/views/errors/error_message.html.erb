@@ -1,0 +1,13 @@
+<%
+  heading = local_assigns[:heading] || t("app.errors.#{params[:action]}.heading")
+  description = local_assigns[:description] || t("app.errors.#{params[:action]}.description")
+%>
+<div class="rails-default-error-page mt-3">
+  <div class="dialog">
+    <div class="dialog-heading">
+      <h1 class="heading-title"><%= heading %></h1>
+      <p class="heading-body"><%= description %></p>
+    </div>
+    <p class="dialog-body"><%= t("app.errors.suggestion")%></p>
+  </div>
+</div>

@@ -12,6 +12,55 @@ en:
           language_sim: Language
           publisher_sim: Publisher
           subject_sim: Subject
+          # complex date
+          complex_date_dtsim: Date
+          complex_year_itsi: Year
+          complex_date_accepted_dtsim: Date accepted
+          complex_year_accepted_itsi: Year accepted
+          complex_date_archived_dtsim: Date archived
+          complex_year_archived_itsi: Year archived
+          complex_date_available_dtsim: Date available
+          complex_year_available_itsi: Year available
+          complex_date_copyrighted_dtsim: Date copyrighted
+          complex_year_copyrighted_itsi: Year copyrighted
+          complex_date_collected_dtsim: Date collected
+          complex_year_collected_itsi: Year collected
+          complex_date_created_dtsim: Date created
+          complex_year_created_itsi: Year created
+          complex_date_deposited_dtsim: Date deposited
+          complex_year_deposited_itsi: Year deposited
+          complex_date_recorded_dtsim: Date recorded
+          complex_year_recorded_itsi: Year recorded
+          complex_date_registered_dtsim: Date registered
+          complex_year_registered_itsi: Year registered
+          complex_date_published_dtsim: Date published
+          complex_year_published_itsi: Year published
+          complex_date_submitted_dtsim: Date submitted
+          complex_year_submitted_itsi: Year submitted
+          complex_date_updated_dtsim: Date updated
+          complex_year_updated_itsi: Year updated
+          # complex funder
+          funder_sim: Funder
+          # complex identifier
+          complex_identifier_ssm: Identifier
+          complex_identifier_group_id_sim: Group id
+          complex_identifier_project_id_sim: Project id
+          # complex person
+          complex_person_sim: Creator / Contributor
+          complex_person_other_sim: Creator
+          complex_person_author_sim: Author
+          complex_person_editor_sim: Editor
+          complex_person_translator_sim: Translator
+          complex_person_data_depositor_sim: Data depositor
+          complex_person_data_curator_sim: Data curator
+          complex_person_contact_person_sim: Contact person
+          complex_person_corresponding_author_sim: Corresponding author
+          complex_person_operator_sim: Operator
+          complex_person_creator_sim: Creator
+          complex_person_contributor_sim: Contributor
+          complex_person_affiliation_sim: Affiliation
+          # complex relation
+          complex_relation_relationship_sim: Relationship
         index:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -27,8 +76,50 @@ en:
           license_tesim: License
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement
+          software_version_tesim: Software version
           subject_tesim: Subject
+          # complex date
+          complex_date_dtsim: Date
+          complex_date_accepted_dtsim: Date accepted
+          complex_date_available_dtsim: Date available
+          complex_date_copyrighted_dtsim: Date copyrighted
+          complex_date_collected_dtsim: Date collected
+          complex_date_created_dtsim: Date created
+          complex_date_issued_dtsim: Date issued
+          complex_date_published_dtsim: Date published
+          complex_date_submitted_dtsim: Date submitted
+          complex_date_updated_dtsim: Date updated
+          complex_date_valid_dtsim: Date valid
+          complex_date_processed_dtsim: Date processed
+          complex_date_purchased_dtsim: Date purchased
+          complex_date_other_dtsim: Date
+          # complex funder
+          award_title_tesim: Award title
+          award_number_ssim: Award number
+          funder_tesim: Funder
+          funder_identifier_ssim: Funder identifier
+          # complex identifier
+          complex_identifier_ssim: Identifier
+          complex_identifier_orcid_ssim: ORCID
+          complex_identifier_local_id_ssim: Local identifier
+          complex_identifier_group_id_ssim: Group id
+          complex_identifier_project_id_ssim: Project id
+          # complex person
+          complex_person_other_tesim: Creator
+          complex_person_author_tesim: Author
+          complex_person_editor_tesim: Editor
+          complex_person_translator_tesim: Translator
+          complex_person_data_depositor_tesim: Data depositor
+          complex_person_data_curator_tesim: Data curator
+          complex_person_operator_tesim: Operator
+          complex_person_contact_person_tesim: Contact person
+          complex_person_creator_tesim: Creator
+          complex_person_contributor_tesim: Contributor
+          complex_person_affiliation_tesim: Affiliation
+          # complex relation
+          complex_relation_title_tesim: Title of related item
         show:
+          approval_number_ssm: Animal/Ethics Approval No.
           based_near_tesim: Location
           contributor_tesim: Contributor
           creator_tesim: Creator
@@ -43,16 +134,431 @@ en:
           license_tesim: License
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement
+          software_version_tesim: Software version
           subject_tesim: Subject
           title_tesim: Title
+          # complex date
+          complex_date_ssm: Date
+          complex_date_accepted_ssm: Date accepted
+          complex_date_available_ssm: Date available
+          complex_date_copyrighted_ssm: Date copyrighted
+          complex_date_collected_ssm: Date collected
+          complex_date_created_ssm: Date created
+          complex_date_issued_ssm: Date issued
+          complex_date_published_ssm: Date published
+          complex_date_submitted_ssm: Date submitted
+          complex_date_updated_ssm: Date updated
+          complex_date_valid_ssm: Date valid
+          complex_date_processed_ssm: Date processed
+          complex_date_purchased_ssm: Date purchased
+          complex_date_other_ssm: Date
+          # complex funding
+          complex_funding_reference_ssm: Funding reference
+          # complex identifier
+          complex_identifier_ssm: Identifier
+          # complex persom
+          complex_person_ssm: Creator
+          complex_person_other_ssm: Creator
+          complex_person_author_ssm: Author
+          complex_person_editor_ssm: Editor
+          complex_person_translator_ssm: Translator
+          complex_person_data_depositor_ssm: Data depositor
+          complex_person_data_curator_ssm: Data curator
+          complex_person_operator_ssm: Operator
+          complex_person_contact_person_ssm: Contact person
+          complex_person_affiliation_ssm: Affiliation
+          complex_person_identifier_ssm: Orcid
+          # Complex relation
+          complex_relation_ssm: Related item
+  helpers:
+    action:
+      batch:
+        new: Create batch of works
+      work:
+        new: Add New Work
   hyrax:
     account_name: My Institution Account Id
+    connect_with_orcid: Connect With ORCID
+    admin:
+      admin_sets:
+        document_list:
+          no_works: The administrative set does not contain any works.
+        form:
+          note: Users granted a new role will only gain the role on works that are deposited after that role has been granted.
+        form_participant_table:
+          depositors:
+            help: Depositors can add new works to this administrative set.
+          viewers:
+            help: Viewers of this administrative set can view works in the set regardless of the visibility settings applied to the work. For example, viewers can view works in this set even if the works are currently embargoed or restricted.
+        form_visibility:
+          page_description: Release and visibility settings determine the options available to depositors when submitting a work to this administrative set. Changes to these settings do not affect previously deposited works.
+          release:
+            fixed: Depositor must choose embargo -- delay release of all works until
+        form_workflow:
+          page_description: Each administrative set has a workflow associated with it. This workflow is applied to all works added to the administrative set. Select the workflow to be used for this administrative set below.
+        show:
+          item_list_header: works in This Set
+      analytics:
+        collection_reports:
+          summary:
+            work_views: Views of works
+            work_downloads: Downloads of works
+          monthly_summary:
+            work_views: Views of works
+            work_downloads: Downloads of works
+          custom_range:
+            work_views: Views of works
+            work_downloads: Downloads of works
+          top_collections:
+            works_in_collection_views: Works In This Collection Views
+        work_reports:
+          index:
+            title: Works Report
+            works: works
+          show:
+            title: Work Report
+            return_to_btn: Return to Works Report
+            view_work_btn: View Work
+            work_type: Work type
+          work_counts:
+            child_works: child works
+          top_works:
+            top_works: Top Works
+            work_title: Work Title
+            work_views: Work Page Views
+      collection_types:
+        form_participant_table:
+          help: Managers of collections of this type can edit collections other users have created, including adding to and removing works from a collection, modifying collection metadata, and deleting collections.
+      sidebar:
+        works_report: Works Report
+        works: Works
+        works_listing: Works listing
+      stats:
+        headers:
+          main: Work Statistics
+          total: "Total Works:"
+      workflows:
+        index:
+          tabs:
+            archived: Archived
+            tombstoned: Tombstoned
+    base:
+      form:
+        batch_upload_hint: To create a separate work for each of the files, go to
+      form_child_work_relationships:
+        actions:
+          remove: Remove from this work
+        attach_new_work: Deposit new work as child of this work
+        caption: This work currently contains these child works
+        confirm:
+          text: Removing this child work will not remove it from the repository, only from this parent work.  Are you sure you want to remove this work from this parent work?
+        header:
+          title: Work title
+      form_files:
+        local_upload_browse_everything_html: |
+          <p>You can add one or more files to associate with this work. Add files
+          from your local system or a cloud provider.</p>
+          <p>Note that if you use a cloud provider to upload a large number of
+          files within a short period of time, the provider may not be able to
+          accommodate your request. If you experience errors uploading from the
+          cloud, let us know via the %{contact_href}.</p>
+        local_upload_html: "<p>You can add one or more files to associate with this work.</p>"
+      form_member_of_collections:
+        add: Add
+        caption: This work is currently in these collections
+        confirm:
+          text: Removing this work will not remove it from the repository, only from this collection. Are you sure you want to remove this work from the collection?
+      form_permission_under_embargo:
+        help_html: "<strong>This work is under embargo.</strong> You can change the settings of the embargo here, or you can visit the %{edit_link} to deactivate it."
+      form_permission_under_lease:
+        help_html: "<strong>This work is under lease.</strong> You can change the settings of the lease here, or you can visit the %{edit_link} to deactivate it."
+      form_progress:
+        required_descriptions: Describe your work
+        saving_your_work: Saving your work. This may take a few moments
+        saving_your_work_warning: The save could take a while. Please do not make any further changes to the form, until the save has completed.
+      form_rendering:
+        help_html: Select file(s) to be offered as a download for every image in Universal Viewer, for example a PDF of the whole work.
+      form_representative:
+        help_html: Select the file with media that represents this work.
+      form_share:
+        directions: Regardless of the visibility settings for this work, you can also share it with other users and groups.
+      form_thumbnail:
+        help_html: Select the file to be used as the thumbnail for this work.
+      show_actions:
+        tombstone: "Tombstone"
+        confirm_delete: "Confirm Delete"
+        restore: "Restore"
+        edit: "Edit work"
+      download_all:
+        file_size_missing: "The total file size for this experiment has not been calculated. You can still download the files. It will either be a zip file or shell script. See %{faq_link} for use of the shell script."
+        zip_file_message: "You will be downloading a zip file. The size of the complete download will be %{size}."
+        shell_file_message: "You will be downloading a shell script, which you can use to download the files. The size of the complete download will be %{size}. We will send you a notification when the shell script is ready for download. See %{faq_link} for use of the shell script."
+    batch:
+      edit:
+        apply_changes_to: "Changes will be applied to: (%{x_number_of} works)"
+        batch_edit_descriptions: Batch Edit Descriptions &nbsp;&nbsp;&nbsp;<small>Click on labels below to edit work descriptions.</small>
+    batch_uploads:
+      files:
+        button_label: Add New Work
+        instructions: Each file will be uploaded to a separate new work resulting in one work per uploaded file.
+        upload_type_instructions: To create a single work for all the files, go to
+      new:
+        breadcrumb: Create Batch of Works
+        header: Batch Create New Works
+        in_collections: These Works in Collections
+        in_other_works: This Work in Other Works
+        in_this_work: Other Works in this Work
+      progress:
+        header: Save Works
+    collection:
+      actions:
+        add_existing_works:
+          desc: Add existing works to this Collection
+          label: Add existing works to this collection
+        add_new_work:
+          desc: Deposit new work through this collection
+          label: Deposit new work through this collection
+      also_belongs_to: This work also belongs to
+    collections:
+      search_form:
+        placeholder: Search subcollections and works in this collection
+        works_in_collection: Works
+      show:
+        crc_1280_template:
+          private_view_label: View private
+          private_view_tooltip_text: See your private view of the page. The control of the private view may depend on your access level view, add / edit
+    collection_types:
+      create_service:
+        admin_set_description: An aggregation of works that is intended to help with administrative control. Admin Sets provide a way of defining behaviors and policies around a set of works.
+        default_description: A User Collection can be created by any user to organize their works.
+    download_all: Download All
+    dashboard:
+      admin_sets:
+        works: Works
+      all:
+        works: All Works
+      breadcrumbs:
+        works_report: Works Report
+      collections:
+        works: Works
+        form_share_table:
+          depositors:
+            help: Depositors of this collection can view the collection and add works to it, even if the visibility permissions of the collection otherwise would not permit them to view it.
+          managers:
+            help: Managers of this collection can add to and remove works from the collection, modify collection metadata, and delete the collection.
+            help_with_works: For collections of type %{type_title}, when works are created directly in this collection, the managers are given edit access to the new work.
+          viewers:
+            help_with_works: For collections of type %{type_title}, when works are created directly in this collection, the viewers are given read access to the new work.
+        show:
+          item_count: Works
+          default_template:
+            public_view_label: View public
+          crc_1280_template:
+            public_view_label: View public
+            public_view_tooltip_text: Preview how this page will look to the public. This does not publish the page.
+        work_action_menu:
+          delete_work: Delete work
+          deleting_from_work: Deleting a work from Hyrax Demo is permanent. Click OK to delete this work from Hyrax Demo, or Cancel to cancel this operation
+          edit_work: Edit work
+          transfer_ownership_of_work: Transfer ownership of work
+      create_work: Create Work
+      heading_actions:
+        create_work: Create work
+        select_type_of_work: Select type of work
+      managed:
+        works: Managed Works
+      my:
+        action:
+          delete_work: Delete work
+          edit_work: Edit work
+          highlight: Highlight work on profile
+          transfer: Transfer ownership of work
+          unhighlight: Unhighlight work
+          work_confirmation: Deleting a work from Hyrax Demo is permanent. Click OK to delete this work from Hyrax Demo, or Cancel to cancel this operation
+        facet_label:
+          works: "Filter works:"
+        heading:
+          work:
+            visibility: Visibility of Work
+        shared: Works Shared with Me
+        works: Works
+        your_works: Your Works
+      my_groups: My groups
+      no_transfer_requests: You haven't received any work transfer requests
+      no_transfers: You haven't transferred any work
+      proxy_help: Select a user who can deposit works on your behalf. Both you and your proxy will be able to make changes to these works. You can revoke a proxy by clicking the Delete Proxy button. To revoke their ability to edit a work they previously submitted, remove them from the Sharing tab on each work.
+      repository_growth:
+        works: Works
+      work_type_graph:
+        work_type: Work Type
+        title: Work Types
+        count: Count
+      stats:
+        works: Works created
+      transfer_works_link: Select works to transfer
     directory:
       suffix: "@example.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; %{current_year} Samvera</strong> Licensed under the Apache License, Version 2.0"
+      copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
-    institution_name: Institution
-    institution_name_full: The Institution Name
-    product_name: OR24 Hyrax
+    homepage:
+      featured_works:
+        no_works: No works have been featured
+        tab_label: Featured Works
+        title: Featured Works
+        no_public: No public work has been contributed.
+    institution_name: RUB
+    institution_name_full: Ruhr University Bochum
+    models:
+      hyrax/work: Work
+    my:
+      count:
+        works:
+          in_repo: "<strong>%{total_count} works</strong> in the repository"
+          works_listing: Works listing
+          you_manage: "<strong>%{total_count} works</strong> you can manage in the repository"
+          you_own: "<strong>%{total_count} works</strong> you own in the repository"
+    product_name: Hyrax Demo
     product_twitter_handle: "@SamveraRepo"
+    notifications:
+      preparing_download:
+        message: "The download will take a few minutes. We will notify you when your download is ready"
+      download_ready:
+        message: "Your download is ready. Click %{download_link} to download. Reference: %{link}"
+        subject: "Your download file is ready"
+      proxy_deposit_request:
+        transfer_on_create:
+          message: "%{user_link} wants to transfer a work to you. Review all %{transfer_link}"
+        validation:
+          open_transfer: Must close the open transfer on the work before creating a new one
+          sender_is_not_receiver: Specify a different user to receive the work
+      workflow:
+        approved_and_sent:
+          message: "%{title} (%{link}) has been approved by %{user} and needs approval by %{next_approval_from}. %{comment}"
+          subject: "Deposit approved and sent for the next approval"
+        pending_review:
+          message: "%{title} (%{link}) was deposited by %{user} and is awaiting your approval %{comment}"
+          subject: Deposit needs your review
+        changes_required:
+          message: |-
+            %{title} (%{link}) requires additional changes before approval.
+             '%{comment}'
+          subject: Deposit requires changes
+        draft:
+          message: "You have created the dataset %{title} (%{link}). You can edit and make changes to the dataset. When ready, click on deposit in the `Click to submit, review and approve` section. Add a comment to let a reviewer know if you would like the dataset to be archived or published."
+          subject: "We have your new dataset"
+        deposited:
+          message: "%{title} (%{link}) was approved by %{user}. %{comment}"
+          subject: Deposit has been published
+        sent_for_review:
+          message: "Deposit %{title} (%{link}) has been sent to %{approval_from} for approval. %{comment}"
+          subject: "Deposit sent for review"
+        approved:
+          message: "Deposit (%{link}) was approved by %{user_role} %{user} and is awaiting your approval. %{comment}"
+          subject: "Deposit approved by %{user_role}"
+        archived:
+          message: "Deposit (%{link}) was archived by %{user}. %{comment}"
+          subject: "Deposit archived by %{user}"
+        tombstoned:
+          message: "Deposit (%{link}) was tombstoned by %{user}. %{comment}"
+          subject: "Deposit tombstoned by %{user}"
+        tombstone_initiate:
+          message: "Deposit (%{link}) has been initiated for tombstone by %{user}. %{comment}"
+          subject: "Deposit initiated for tombstone by %{user}"
+    passive_consent_to_agreement: "You agreed to the %{terms_of_use_url} which has the %{agreement_url} on date (%{agreement_accepted_at})."
+    search:
+      form:
+        hyrax:
+          dashboard:
+            works:
+              index:
+                q:
+                  label: Search all works
+            collections:
+              index:
+                q:
+                  label: Search all collections
+          my:
+            works:
+              index:
+                q:
+                  label: Search my works
+            collections:
+              index:
+                q:
+                  label: Search my collections
+        option:
+          all:
+            label_long: All of Hyrax Demo
+            label_short: All of Hyrax Demo
+          my_works:
+            label_long: My Works
+            label_short: My Works
+    select_type:
+      description: General purpose worktype
+      name: Work
+    share_button: Share Your Work
+    stats:
+      work:
+        header: Work Analytics
+    transfers:
+      new:
+        confirm: Are you sure you want to transfer ownership of this work to another user? Click Ok to transfer or Cancel to return to the transfer screen
+    upload:
+      change_access_message_html: "<p>You have changed the access level on work <i>%{curation_concern}</i>, making it accessible to other users or groups to view or edit.</p><p>Would you like change all of the files within the work to have the same access users, groups and visibility as well?</p>"
+    users:
+      index:
+        works_created: Works Created
+    visibility:
+      open:
+        description: This %{type} is public because it has been published.
+      restricted:
+        description: This %{type} is private and will only become public after it has been submitted to the publications process and has been approved for publication by the Publications Manager. Archived works are also private.
+    workflow:
+      unauthorized: The work is not currently available because it has not yet completed the approval process
+      unauthorized_parent: The file is not currently available because its parent work has not yet completed the approval process
+    works:
+      create:
+        breadcrumb: Add New Work
+      form:
+        in_other_works: This Work in Other Works
+        in_this_work: Other Works in this Work
+      progress:
+        header: Save Work
+      update:
+        header: Edit Work
+      tombstone: This work has been tombstoned and is not available
+      tombstone_edit: This work has been tombstoned and is not available for editing.
+  simple_form:
+    hints:
+      admin_set:
+        description: A brief overarching description that applies to all works collected in this set. For example, "Theses and supplementary files created by the School of Earth Sciences graduate students."
+      collection_type:
+        allow_multiple_membership: Allow works to belong to multiple collections of this type
+        assigns_visibility: Allow collections of this type to assign initial visibility settings to a new work
+        assigns_workflow: Allow collections of this type to assign workflow to a new work
+        require_membership: A work must belong to at least one collection of this type
+        share_applies_to_new_works: When new works are created directly in the collection, grant sharing users and groups permissions for the new work according to their collection roles.
+      defaults:
+        based_near: A place name related to the work, such as its site of publication, or the city, state, or country the work contents are about. Calls upon the <a href='http://www.geonames.org'>GeoNames web service</a>.
+        contributor: A person or group you want to recognize for playing a role in the creation of the work, but not the primary role.
+        creator: The person or group responsible for the work. Usually this is the author of the content. Personal names should be entered with the last name first, e.g. &quot;Smith, John.&quot;.
+        date_created: The date on which the work was created.
+        description: Free-text notes about the work. Examples include abstracts of a paper or citation information for a journal article.
+        identifier: A unique handle identifying the work. An example would be a DOI for a journal article, or an ISBN or OCLC number for a book.
+        keyword: Words or phrases you select to describe what the work is about. These are used to search for content.
+        language: The language of the work's content.
+        license: Licensing and distribution information governing access to the work. Select from the provided drop-down list.
+        publisher: The person or group making the work available. Generally this is the institution.
+        related_url: A link to a website or other specific content (audio, video, PDF document) related to the work. An example is the URL of a research project from which the work was derived.
+        subject: Headings or index terms describing what the work is about; these do need to conform to an existing vocabulary.
+        title: A name to aid in identifying a work.
+    labels:
+      collection_type:
+        share_applies_to_new_works: APPLY TO NEW WORKS
+    placeholders:
+      defaults:
+        find_child_work: Search for a work…
+  total_view:
+    one: This work has 1 total view
+    other: This work has %{count} total views

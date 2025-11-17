@@ -13,4 +13,6 @@
 //= require blacklight_gallery
 //= require_tree .
 //= require hyrax
+//= require date_picker_options
+//= require override_search
 

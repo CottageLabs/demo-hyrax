@@ -1,25 +1,7 @@
 terms:
-    - id: http://creativecommons.org/licenses/by/3.0/us/
-      term: Attribution 3.0 United States
-      active: false
-    - id: http://creativecommons.org/licenses/by-sa/3.0/us/
-      term: Attribution-ShareAlike 3.0 United States
-      active: false
-    - id: http://creativecommons.org/licenses/by-nc/3.0/us/
-      term: Attribution-NonCommercial 3.0 United States
-      active: false
-    - id: http://creativecommons.org/licenses/by-nd/3.0/us/
-      term: Attribution-NoDerivs 3.0 United States
-      active: false
-    - id: http://creativecommons.org/licenses/by-nc-nd/3.0/us/
-      term: Attribution-NonCommercial-NoDerivs 3.0 United States
-      active: false
-    - id: http://creativecommons.org/licenses/by-nc-sa/3.0/us/
-      term: Attribution-NonCommercial-ShareAlike 3.0 United States
-      active: false
-    - id: http://www.europeana.eu/portal/rights/rr-r.html
-      term: All rights reserved
-      active: false
+    - id: http://rightsstatements.org/vocab/InC/1.0/
+      term: In Copyright
+      active: true
     - id: https://creativecommons.org/licenses/by/4.0/
       term: Creative Commons BY Attribution 4.0 International
       active: true
@@ -43,4 +25,13 @@ terms:
       active: true
     - id: http://creativecommons.org/publicdomain/mark/1.0/
       term: Creative Commons Public Domain Mark 1.0
+      active: true
+    - id: http://www.apache.org/licenses/LICENSE-2.0
+      term: Apache License 2.0
+      active: true
+    - id: http://www.gnu.org/licenses/gpl.html
+      term: GNU General Public License
+      active: true
+    - id: http://opensource.org/licenses/MIT
+      term: MIT License
       active: true

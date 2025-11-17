@@ -1,4 +1,4 @@
-namespace :or2024 do
+namespace :hyrax_demo do
   namespace :admin_user do
     desc 'Create system administrator'
     task :create => :environment do

@@ -1,0 +1,19 @@
+attributes:
+  identifier:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://purl.org/spar/datacite/hasIdentifier
+  scheme:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://purl.org/spar/datacite/usesIdentifierScheme
+  label:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.w3.org/2004/02/skos/core#prefLabel  

@@ -9,5 +9,12 @@ class ApplicationController < ActionController::Base
   include Hyrax::ThemedLayoutController
   with_themed_layout '1_column'
 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  rescue
+    flash[:notice] = "The selected locale is invalid: #{params[:locale]}"
+    params[:locale] = I18n.default_locale
+    I18n.locale = I18n.default_locale
+  end
 
 end

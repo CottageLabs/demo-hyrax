@@ -1,0 +1,13 @@
+attributes:
+  date:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://rs.tdwg.org/dwc/terms/eventDate
+  description:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://purl.org/dc/terms/description

@@ -9,6 +9,9 @@ class MonographForm < Hyrax::Forms::PcdmObjectForm(Monograph)
   include Hyrax::FormFields(:basic_metadata)
   include Hyrax::FormFields(:monograph)
 
+  def tabs
+    %w[metadata files relationships]
+  end
   # Define custom form fields using the Valkyrie::ChangeSet interface
   #
   # property :my_custom_form_field

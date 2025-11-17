@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_21_060557) do
+ActiveRecord::Schema.define(version: 2024_06_22_060557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(version: 2024_05_21_060557) do
     t.string "access"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_system_generated", default: false
     t.index ["permission_template_id", "agent_id", "agent_type", "access"], name: "uk_permission_template_accesses", unique: true
     t.index ["permission_template_id"], name: "index_permission_template_accesses_on_permission_template_id"
   end
@@ -326,6 +327,7 @@ ActiveRecord::Schema.define(version: 2024_05_21_060557) do
 
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
+    t.boolean "is_system_generated", default: false
   end
 
   create_table "roles_users", id: false, force: :cascade do |t|

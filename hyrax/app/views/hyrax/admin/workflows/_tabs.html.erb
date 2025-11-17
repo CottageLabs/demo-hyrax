@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs" id="my_nav" role="list">
+  <li<%= ' class="nav-item"'.html_safe if @response.viewing_under_review? %>>
+      <%= link_to t('hyrax.admin.workflows.index.tabs.under_review'),
+        hyrax.admin_workflows_path(state: 'under-review'), class: "nav-link#{' active' if params[:state] == nil || params[:state] == 'under-review'}" %>
+  </li>
+  <li<%= ' class="nav-item"'.html_safe if !@response.viewing_under_review? %>>
+    <%= link_to t('hyrax.admin.workflows.index.tabs.published'), hyrax.admin_workflows_path(state: 'published'), class: "nav-link#{' active' if params[:state] == 'published'}" %>
+  </li>
+  <li<%= ' class="nav-item"'.html_safe if !@response.viewing_under_review? %>>
+    <%= link_to t('hyrax.admin.workflows.index.tabs.archived'), hyrax.admin_workflows_path(state: 'archived'), class: "nav-link#{' active' if params[:state] == 'archived'}" %>
+  </li>
+  <li<%= ' class="nav-item"'.html_safe if !@response.viewing_under_review? %>>
+    <%= link_to t('hyrax.admin.workflows.index.tabs.tombstoned'), hyrax.admin_workflows_path(state: 'tombstoned'), class: "nav-link#{' active' if params[:state] == 'tombstoned'}" %>
+  </li>
+</ul>

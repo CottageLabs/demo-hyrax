@@ -1,10 +1,39 @@
 en:
-  blacklight:
-    search:
-      fields:
-        facet:
-          complex_person_sim:  Person
-        index:
-          complex_person_tesim:  Person
-        show:
-          complex_person_tesim:  Person
+  hyrax:
+    base:
+      workflow_actions:
+        actions: Actions
+        previous_comments: Previous Comments
+        review_comment: Review Comment
+        title: Click to submit, review and approve
+        review_comment_text: "Let the reviewer know if you would like the dataset to be published or archived."
+    icons:
+      dataset:     'fa fa-file-text-o'
+    select_type:
+      dataset:
+        description:        "Dataset works"
+        name:               "Dataset"
+    works:
+      form:
+        tab:
+          required:         "Required"
+          description:      "Description"
+          references:       "References"
+          funding:          "Funding"
+          dataset_thumbnail: "Thumbnail"
+          files:            "Files"
+          relationships:    "Relationships"
+  simple_form:
+    labels:
+      dataset:
+        title:                            "Title"
+        complex_date:                     "Date"
+        complex_funding_reference:        "Funding reference"
+        complex_identifier:               "Identifiers"
+        complex_person:                   "Creators and Contributors"
+        complex_relation:                 "Related items"
+        complex_subject:                  "Subject"
+        dataset_method:                   "Method"
+    hints:
+      defaults:
+        description: Free-text notes about the dataset.

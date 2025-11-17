@@ -586,6 +586,8 @@ GEM
     noid-rails (3.1.0)
       actionpack (>= 5.0.0, < 7.1)
       noid (~> 0.9)
+    nokogiri (1.16.5-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
@@ -971,6 +973,7 @@ GEM
     zeitwerk (2.6.14)
 
 PLATFORMS
+  aarch64-linux-musl
   x86_64-linux
 
 DEPENDENCIES

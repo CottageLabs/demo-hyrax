@@ -1,0 +1,32 @@
+attributes:
+  funder_identifier:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.example.com/vocabs/demo/funderIdentifier
+  funder_name:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.example.com/vocabs/demo/funderName
+  award_number:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.example.com/vocabs/demo/awardNumber
+  award_uri:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.example.com/vocabs/demo/awardURI
+  award_title:
+    type: string
+    form:
+      required: true
+      primary: true
+    predicate: http://www.example.com/vocabs/demo/awardTitle
+
