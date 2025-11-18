@@ -96,6 +96,26 @@ class SolrDocument
     self["for_complex_identifier_tesim"]
   end
 
+  def dataset_method
+    self["dataset_method_tesim"]
+  end
+
+  def series_information
+    self["series_information_tesim"]
+  end
+
+  def technical_information
+    self["technical_information_tesim"]
+  end
+
+  def software_version
+    self["software_version_tesim"]
+  end
+
+  def doi
+    self["doi_ssim"]
+  end
+
   def sipity_entity
     @sipity_entity ||= Sipity::Entity(self)
   end

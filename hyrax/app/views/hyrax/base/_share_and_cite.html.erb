@@ -1,0 +1,10 @@
+<% if is_published?(presenter) %>
+  <div class="row col-md-12 citations-social-media">
+    <div class="citations">
+      <% if Hyrax.config.citations? %>
+        <button class="btn btn-default citation-modal-btn" data-toggle="modal" data-target="#citations-modal"><%= t(".citations") %></button>
+      <% end %>
+    </div>
+    <%= render 'social_media' %>
+  </div>
+<% end %>

@@ -23,8 +23,9 @@ module AdminSetSetupService
     updated_admin_set = Hyrax.persister.save(resource: admin_set)
 
     Hyrax::AdminSetCreateService.call(admin_set: updated_admin_set, creating_user: admin_user)
-    updated_admin_set
+
     puts "Created admin set for #{title}"
+    updated_admin_set
   end
 
   def activate_workflow(admin_set_id, workflow_name)
