@@ -16,9 +16,6 @@ class DatasetIndexer < Hyrax::Indexers::PcdmObjectIndexer(Dataset)
   # Uncomment this block if you want to add custom indexing behavior:
   def to_solr
     super.tap do |index_document|
-      if resource.title and resource.title.first.present?
-        index_document[:title_anssort] = resource.title[0]
-      end
       index_document[:member_of_collections_ssim] = resource.parent_collections&.first&.title if resource.persisted?
       index_document.compact_blank
     end
